@@ -7,7 +7,7 @@ import like from './../../resourses/img/like_smile.svg';
 import favorite from './../../resourses/img/heart_smile.svg';
 import dislike from './../../resourses/img/dislike_smile.svg';
 import searchIcon from './../../resourses/img/search_icon.svg';
-import { Outlet } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
 
 const Layout = () => {
 
@@ -24,13 +24,13 @@ const Layout = () => {
                         <nav className="top-menu">
                             <ul className="top-menu__items">
                                 <li className="top-menu__item">
-                                   <a href="#"><img src={like} alt="" /></a> 
+                                   <NavLink to="#"><img src={like} alt="" /></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
-                                   <a href="#"><img src={favorite} alt="" /></a> 
+                                   <NavLink to="#"><img src={favorite} alt="" /></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
-                                   <a href="#"><img src={dislike} alt="" /></a> 
+                                   <NavLink to="#"><img src={dislike} alt="" /></NavLink> 
                                 </li>
                             </ul>
                         </nav>
@@ -41,16 +41,16 @@ const Layout = () => {
                     <div className="side-menu__title">Lets start using The Cat API</div>
                         <nav className="side-menu__items">
                             <div className="side-menu__item item-menu">
-                               <a href='/'><div className="item-menu__image"><img src={voting} alt="" /></div></a>
-                                <button className="item-menu__button item-menu__button_active">VOTING</button>
+                               <NavLink to='/'><div className="item-menu__image"><img src={voting} alt="" /></div></NavLink>
+                                <NavLink to='/' className="item-menu__button">VOTING</NavLink>
                             </div>
                             <div className="side-menu__item item-menu">
-                                <a href="/"><div className="item-menu__image"><img src={breeds} alt="" /></div></a>
-                                <button className="item-menu__button ">BREEDS</button>
+                                <NavLink to="breeds"><div className="item-menu__image"><img src={breeds} alt="" /></div></NavLink>
+                                <NavLink to='breeds' className="item-menu__button ">BREEDS</NavLink>
                             </div>
                             <div className="side-menu__item item-menu">
-                               <a href="/"><div className="item-menu__image"><img src={galery} alt="" /></div></a>
-                                <button className="item-menu__button ">GALLERY</button>
+                               <NavLink to="#"><div className="item-menu__image"><img src={galery} alt="" /></div></NavLink>
+                                <NavLink to='#' className="item-menu__button ">GALLERY</NavLink>
                             </div>
                         </nav>
                     </div>

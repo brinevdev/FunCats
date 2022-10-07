@@ -1,6 +1,6 @@
 .wrapper {
     background-color: #F8F8F7;
-    height: 100vh;
+    min-height: 100vh;
 }
 .container {
     max-width: 1440px;
@@ -111,10 +111,13 @@
             background-color:#FF868E;
             color: #FFFFFF;
         }
-        &__button_active {
+        &__button.active {
             background-color: #FF868E;
             color: #FFFFFF;
         }
-
     }
+}
+.page {
+    background-color: #fff;
+    padding: 20px;
 }

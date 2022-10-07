@@ -1,0 +1,66 @@
+.cat-list {
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    background-color: #fff;
+    justify-content: center;
+    grid-template-areas:
+    'item_1 item_2 item_3'
+    'item_1 item_5 item_5'
+    'item_4 item_5 item_5'
+    'item_6 item_7 item_8'
+    'item_10 item_10 item_8'
+    'item_10 item_10 item_9'
+    'item_11 item_12 item_13'
+    'item_11 item_15 item_15'
+    'item_14 item_15 item_15'
+    'item_16 item_17 item_18'
+    'item_20 item_20 item_18'
+    'item_20 item_20 item_19';
+ }
+ $i:0;
+ @for $i from 1 through 20{
+    .cat-list_#{$i}{
+        grid-area: item_#{$i};
+    }
+    $i:$i + 1;
+}
+.cat-list__item  {
+    position: relative;
+    padding: 0 0 70% 0;
+    cursor: pointer;
+}
+.cat-list__item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.cat-list__item:hover .cat-list__name {
+    display: block;
+}
+.cat-list__name {
+    display: none;
+    position: absolute;
+    width: 90%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FF868E;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+
+
+
