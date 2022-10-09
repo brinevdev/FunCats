@@ -41,15 +41,15 @@ const Layout = () => {
                     <div className="side-menu__title">Lets start using The Cat API</div>
                         <nav className="side-menu__items">
                             <div className="side-menu__item item-menu">
-                               <NavLink to='/'><div className="item-menu__image"><img src={voting} alt="" /></div></NavLink>
+                               <NavLink to='/' className="item-menu__image"><img src={voting} alt="" /></NavLink>
                                 <NavLink to='/' className="item-menu__button">VOTING</NavLink>
                             </div>
                             <div className="side-menu__item item-menu">
-                                <NavLink to="breeds"><div className="item-menu__image"><img src={breeds} alt="" /></div></NavLink>
+                                <NavLink to="breeds"  className="item-menu__image"><img src={breeds} alt="" /></NavLink>
                                 <NavLink to='breeds' className="item-menu__button ">BREEDS</NavLink>
                             </div>
                             <div className="side-menu__item item-menu">
-                               <NavLink to="#"><div className="item-menu__image"><img src={galery} alt="" /></div></NavLink>
+                               <NavLink to="#"><img src={galery} alt="" /></NavLink>
                                 <NavLink to='#' className="item-menu__button ">GALLERY</NavLink>
                             </div>
                         </nav>
