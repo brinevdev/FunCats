@@ -1,13 +1,12 @@
-import { Fragment } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './breeds.scss';
+import { Fragment } from 'react';
+import PageNav from '../../components/pageNav/pageNav';
 import CatList from '../../components/catList/CatList';
-import leftArrow from './../../resourses/img/left-arrow.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeBreed, changeLimit, sortAsc, sortDesc } from '../../components/catsSlice/catsSlice';
 
 const Breeds = () => {
-    let navigate = useNavigate()
+
     let dispatch = useDispatch()
     let {breeds} = useSelector(state => state);
 
@@ -18,14 +17,8 @@ const Breeds = () => {
     return (
      <>
         <div className="breeds-nav">
-            <button onClick = {() => navigate(-1)} className="breeds-nav__back">
-                <img src={leftArrow} alt="" />
-            </button>
-            <div className="breeds-nav__lable">
-                BREEDS
-            </div>
+            <PageNav title = 'breeds'/> 
             <select className="breeds-nav__select" onChange = {(e) => {
-                console.log(e);
                 dispatch(changeBreed(e.target.value))
                 }}>
                 <option value = {''}>All breeds</option>

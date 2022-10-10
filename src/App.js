@@ -4,10 +4,11 @@ import { useDispatch, useSelector, } from 'react-redux';
 import { getAllCats, getAllBreeds } from './components/catsSlice/catsSlice';
 import Layout from './components/layout/Layout';
 import Breeds from './pages/breeds/Breeds';
+import SingleBreed from './pages/singleBreed/singleBreed';
 
 
 function App() {
-  
+
   const dispatch = useDispatch()
   const filters = useSelector(state => state.filters);
 
@@ -20,10 +21,13 @@ function App() {
   },[filters.limit, filters.breed_ids])
 
 
+
+
   return (
     <Routes>
       <Route path='/' element = {<Layout/>}>
         <Route path = 'breeds'  element = { <Breeds/> }/>
+        <Route path = 'breeds/:id'  element = { <SingleBreed/>}/>
       </Route>
     </Routes>
   );

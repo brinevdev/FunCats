@@ -7,6 +7,7 @@ const initialState = {
         limit:5
     },
     breeds:[],
+    breed:{},
 }
 
 export const getAllCats = createAsyncThunk('cats/getAllCats', async (filters = {}) => {
@@ -22,6 +23,12 @@ export const getAllBreeds = createAsyncThunk('cats/getAllBreeds', async () => {
     const res = await  fetch(`https://api.thecatapi.com/v1/breeds?api_key=${APIKEY}`);
     return await res.json();
 })
+
+
+export const getBreed = createAsyncThunk('cats/getAllCat', async (id) => {
+    let res = await fetch(`https://api.thecatapi.com/v1/images/${id}`);
+    return await res.json();
+});
 
 const catsSlice = createSlice({
     name: 'cats',
@@ -51,7 +58,19 @@ const catsSlice = createSlice({
                     name: breed.name,
                 }
             })
-        }
+        },
+        [getBreed.pending]: (state) => {state.breedLoadingStatus = 'loading'},
+        [getBreed.fulfilled]: (state, action) => {
+            state.breedLoadingStatus = 'success'
+            state.breed = {
+            name: action.payload.breeds[0].name,
+            image: action.payload.url,
+            temperament: action.payload.breeds[0].temperament,
+            origin: action.payload.breeds[0].origin,
+            lifeSpan: action.payload.breeds[0].life_span,
+            weight: action.payload.breeds[0].weight.metric
+        }},
+        [getBreed.rejected]: (state) => {state.breedLoadingStatue = 'error'}
     }
 
 })

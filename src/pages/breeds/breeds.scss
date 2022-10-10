@@ -2,26 +2,6 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    &__back {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        background: #FBE0DC;
-        border-radius: 10px;
-    }
-    &__lable {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 30px;
-        text-align: center;
-        letter-spacing: 2px;
-        color: #FFFFFF;
-        background: #FF868E;
-        border-radius: 10px;
-        padding: 5px 30px;
-    }
     &__select {
         font-weight: 400;
         font-size: 16px;

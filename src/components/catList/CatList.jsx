@@ -9,7 +9,8 @@ const CatList = () => {
     const {cats,status} = useSelector(state => state);
     const catsItems = cats.map((cat,index) => {
         return (
-                <Cat 
+                <Cat
+                id = {cat.id} 
                 key = {cat.id} 
                 index = {index} 
                 breedId = {cat.breedId} 
