@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
+import { APIKEY } from "../../variables";
 
-const APIKEY = 'live_7cy9oXwBEJPzB3t6OPqNcCFX16rvO3f8PvbMo5kxBGkqqmuOhkGaywhFbpF2JCMK';
+
 const initialState = {
     cats:[],
     cat: {},

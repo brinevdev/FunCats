@@ -6,7 +6,7 @@ import Spinner from '../spinner/Spinner';
 import errorImage from './../../resourses/img/error.png'
 
 const CatList = () => {
-    const {cats,status} = useSelector(state => state);
+    const {cats,status} = useSelector(state => state.cats);
     const catsItems = cats.map((cat,index) => {
         return (
                 <Cat

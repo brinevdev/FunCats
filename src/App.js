@@ -11,7 +11,8 @@ import Voting from './pages/voting/voting';
 function App() {
 
   const dispatch = useDispatch()
-  const filters = useSelector(state => state.filters);
+  const filters = useSelector(state => state.cats.filters);
+
 
   useEffect(() => {
     dispatch(getAllBreeds())

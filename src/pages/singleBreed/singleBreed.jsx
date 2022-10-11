@@ -14,7 +14,7 @@ import errorImage from './../../resourses/img/error.png'
 const SingleBreed = () => {
     const dispatch = useDispatch();
     const { id } = useParams()
-    const { breed, breedLoadingStatus } = useSelector(state => state);
+    const { breed, breedLoadingStatus } = useSelector(state => state.cats);
     const {name, temperament, origin, weight, lifeSpan, image} = breed; 
    
     

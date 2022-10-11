@@ -8,7 +8,7 @@ import { changeBreed, changeLimit, sortAsc, sortDesc } from '../../components/ca
 const Breeds = () => {
 
     let dispatch = useDispatch()
-    let {breeds} = useSelector(state => state);
+    let {breeds} = useSelector(state => state.cats);
 
     let breedsOptions = breeds.map((breed) => {
         return <option key = {breed.id} value = {breed.id}>{breed.name}</option>

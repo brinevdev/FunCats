@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import reducer from '../components/catsSlice/catsSlice';
+import catReducer from '../components/catsSlice/catsSlice';
+import voteReducer from './../pages/voting/votingSlice';
 
 export const store = configureStore({
-  reducer,
+  reducer:{
+   vote:voteReducer,
+   cats:catReducer,
+  },
   devTools: process.env.NODE_ENV !=='production',
 });
