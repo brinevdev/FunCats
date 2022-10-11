@@ -3,9 +3,9 @@ import logo from './../../resourses/img/Logo.svg';
 import voting from './../../resourses//img/voting_image.png';
 import galery from './../../resourses/img/galery_image.png';
 import breeds from './../../resourses/img/breeds_image.png';
-import like from './../../resourses/img/like_smile.svg';
-import favorite from './../../resourses/img/heart_smile.svg';
-import dislike from './../../resourses/img/dislike_smile.svg';
+import {ReactComponent as Like} from './../../resourses/img/like_smile.svg';
+import {ReactComponent as Favorite} from './../../resourses/img/heart_smile.svg';
+import {ReactComponent as Dislike} from './../../resourses/img/dislike_smile.svg';
 import searchIcon from './../../resourses/img/search_icon.svg';
 import { Outlet, NavLink } from 'react-router-dom';
 
@@ -24,13 +24,13 @@ const Layout = () => {
                         <nav className="top-menu">
                             <ul className="top-menu__items">
                                 <li className="top-menu__item">
-                                   <NavLink to="#"><img src={like} alt="" /></NavLink> 
+                                   <NavLink to="#"><Like fill="#FF868E"/></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
-                                   <NavLink to="#"><img src={favorite} alt="" /></NavLink> 
+                                   <NavLink to="#"><Favorite fill='#FF868E'/></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
-                                   <NavLink to="#"><img src={dislike} alt="" /></NavLink> 
+                                   <NavLink to="#"><Dislike fill="#FF868E"/></NavLink> 
                                 </li>
                             </ul>
                         </nav>

@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 const APIKEY = 'live_7cy9oXwBEJPzB3t6OPqNcCFX16rvO3f8PvbMo5kxBGkqqmuOhkGaywhFbpF2JCMK';
 const initialState = {
     cats:[],
+    cat: {},
     filters:{
         limit:5
     },
@@ -18,6 +20,11 @@ export const getAllCats = createAsyncThunk('cats/getAllCats', async (filters = {
     const res = await fetch(`https://api.thecatapi.com/v1/images/search?api_key=${APIKEY}&has_breeds=1&size=full${filterParams}`);
     return await res.json();
 });
+
+export const getCat = createAsyncThunk('cats/getCat', async () => {
+    const res = await fetch(`https://api.thecatapi.com/v1/images/search?api_key=${APIKEY}`);
+    return await res.json();
+})
 
 export const getAllBreeds = createAsyncThunk('cats/getAllBreeds', async () => {
     const res = await  fetch(`https://api.thecatapi.com/v1/breeds?api_key=${APIKEY}`);
@@ -42,6 +49,7 @@ const catsSlice = createSlice({
         [getAllCats.fulfilled]: (state,action) => {
             state.status = 'success'
             state.cats = action.payload.map((cat)=>{
+                console.log(action.payload);
                 return {
                     id: cat.id,
                     url: cat.url,
@@ -51,6 +59,13 @@ const catsSlice = createSlice({
             })
         },
         [getAllCats.rejected]: (state) => {state.status = 'error'},
+        [getCat.pending]: (state) => {state.catLoadingStatus = 'loading'},
+        [getCat.fulfilled]:(state, action) => {
+           state.cat = {
+            id: action.payload[0].id,
+            url: action.payload[0].url,
+           }
+        },
         [getAllBreeds.fulfilled]: (state,action) => {
             state.breeds = action.payload.map((breed)=>{
                 return {
