@@ -67,6 +67,8 @@
     grid-template-columns: 50% 50%;
 }
 .side-menu {
+    position: sticky;
+    top: 30px;
     margin-top: 100px;
     max-width: 500px;
     &__items {

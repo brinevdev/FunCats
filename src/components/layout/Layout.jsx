@@ -37,22 +37,24 @@ const Layout = () => {
                     </div>
                 </header>
                 <main className="main">
-                    <div className="side-menu">
-                    <div className="side-menu__title">Lets start using The Cat API</div>
-                        <nav className="side-menu__items">
-                            <div className="side-menu__item item-menu">
-                               <NavLink to='/' className="item-menu__image"><img src={voting} alt="" /></NavLink>
-                                <NavLink to='/' className="item-menu__button">VOTING</NavLink>
-                            </div>
-                            <div className="side-menu__item item-menu">
-                                <NavLink to="breeds"  className="item-menu__image"><img src={breeds} alt="" /></NavLink>
-                                <NavLink to='breeds' className="item-menu__button ">BREEDS</NavLink>
-                            </div>
-                            <div className="side-menu__item item-menu">
-                               <NavLink to="#"><img src={galery} alt="" /></NavLink>
-                                <NavLink to='#' className="item-menu__button ">GALLERY</NavLink>
-                            </div>
-                        </nav>
+                    <div className="wrappper">
+                        <div className="side-menu">
+                            <div className="side-menu__title">Lets start using The Cat API</div>
+                            <nav className="side-menu__items">
+                                <div className="side-menu__item item-menu">
+                                <NavLink to='/' className="item-menu__image"><img src={voting} alt="" /></NavLink>
+                                    <NavLink to='/' className="item-menu__button">VOTING</NavLink>
+                                </div>
+                                <div className="side-menu__item item-menu">
+                                    <NavLink to="breeds"  className="item-menu__image"><img src={breeds} alt="" /></NavLink>
+                                    <NavLink to='breeds' className="item-menu__button ">BREEDS</NavLink>
+                                </div>
+                                <div className="side-menu__item item-menu">
+                                <NavLink to="#"><img src={galery} alt="" /></NavLink>
+                                    <NavLink to='#' className="item-menu__button ">GALLERY</NavLink>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                     <div className="page">
                         <Outlet/>
