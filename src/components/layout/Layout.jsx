@@ -6,8 +6,9 @@ import breeds from './../../resourses/img/breeds_image.png';
 import {ReactComponent as Like} from './../../resourses/img/like_smile.svg';
 import {ReactComponent as Favorite} from './../../resourses/img/heart_smile.svg';
 import {ReactComponent as Dislike} from './../../resourses/img/dislike_smile.svg';
-import searchIcon from './../../resourses/img/search_icon.svg';
 import { Outlet, NavLink } from 'react-router-dom';
+import Search from '../search/Search';
+
 
 const Layout = () => {
 
@@ -17,10 +18,7 @@ const Layout = () => {
                 <header className="header">
                     <a href="/" className="header__logo"><img src={logo} alt="logo" /></a>
                     <div className="navigation">
-                        <form action="">
-                            <input type="text" className="navigation__search" placeholder='Search for breeds by name'/>
-                            <button><img src={searchIcon} alt="" /></button>
-                        </form>
+                        <Search/>
                         <nav className="top-menu">
                             <ul className="top-menu__items">
                                 <li className="top-menu__item">

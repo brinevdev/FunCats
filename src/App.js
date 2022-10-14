@@ -6,6 +6,7 @@ import Layout from './components/layout/Layout';
 import Breeds from './pages/breeds/Breeds';
 import SingleBreed from './pages/singleBreed/singleBreed';
 import Voting from './pages/voting/voting';
+import SearchPage from './pages/search/SearchPage';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route index  element = { <Voting/>}/>
         <Route path = 'breeds'  element = { <Breeds/> }/>
         <Route path = 'breeds/:id'  element = { <SingleBreed/>}/>
+        <Route path = 'search/:breed'  element = { <SearchPage/>}/>
       </Route>
     </Routes>
   );

@@ -3,13 +3,11 @@ import { Fragment } from 'react';
 import PageNav from '../../components/pageNav/pageNav';
 import CatList from '../../components/catList/CatList';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeBreed, changeLimit, sortAsc, sortDesc } from '../../components/catsSlice/catsSlice';
+import { changeBreed, changeLimit} from '../../components/catsSlice/catsSlice';
 
 const Breeds = () => {
-
+    const {cats, breeds, status} = useSelector(state => state.cats);
     let dispatch = useDispatch()
-    let {breeds} = useSelector(state => state.cats);
-
     let breedsOptions = breeds.map((breed) => {
         return <option key = {breed.id} value = {breed.id}>{breed.name}</option>
     })
@@ -31,7 +29,7 @@ const Breeds = () => {
                 <option value='20'>Limit: 20</option>
             </select>
         </div>
-        <CatList/>
+        <CatList cats = {cats}  status = {status} />
      </>
     )
 }

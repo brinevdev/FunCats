@@ -1,0 +1,14 @@
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &__query {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 29px;
+        color: #8C8C8C;
+    }
+    .black {
+        color: #1D1D1D;
+    }
+}
