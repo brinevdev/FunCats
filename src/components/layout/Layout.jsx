@@ -22,13 +22,13 @@ const Layout = () => {
                         <nav className="top-menu">
                             <ul className="top-menu__items">
                                 <li className="top-menu__item">
-                                   <NavLink to="#"><Like fill="#FF868E"/></NavLink> 
+                                   <NavLink to="likes"><Like fill="#FF868E"/></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
                                    <NavLink to="#"><Favorite fill='#FF868E'/></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
-                                   <NavLink to="#"><Dislike fill="#FF868E"/></NavLink> 
+                                   <NavLink to="dislikes"><Dislike fill="#FF868E"/></NavLink> 
                                 </li>
                             </ul>
                         </nav>

@@ -3,13 +3,31 @@ import { APIKEY } from "../../variables";
 
 
 
-const userId = 'testUser5351';
+const userId = 'testUser530';
 
 const initialState = {
     voteResponse:{},
     voteStatus: '',
     logs:[],
 }
+
+
+export const getVotes = createAsyncThunk('voting/getVotes', async () => {
+    let res = await fetch(`https://api.thecatapi.com/v1/votes?&order=DESC&limit=30&attach_image=1&sub_id=${userId}`,{
+        method:"GET",
+        headers: {
+            "Content-Type": 'application/json',
+            "x-api-key": APIKEY
+        },
+    })
+
+    res = await res.json();
+
+    let likes = res.filter((vote) => vote.value > 0).map(like => like.image);
+    let dislikes = res.filter((vote) => vote.value <0).map(like => like.image);
+
+    return {likes,dislikes}
+})
 
 
 export const vote = createAsyncThunk('voting/vote', async (cat) => {
@@ -83,6 +101,12 @@ const votingSlice = createSlice({
         [addToFavorite.rejected]: (state, action) => {
             state.logs.push(createLog(action.payload));
             state.voteResponse = {status: 'error', message:'Fetching error'}
+        },
+        [getVotes.pending]: (state) => {state.getVoteStatus = 'loading'},
+        [getVotes.fulfilled]: (state, action) => {
+            state.getVoteStatus = 'success';
+            state.likes = action.payload.likes;
+            state.dislikes = action.payload.dislikes;
         },
         
     }
