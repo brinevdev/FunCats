@@ -102,10 +102,12 @@ const catsSlice = createSlice({
             weight: action.payload.breeds[0].weight.metric
         }},
         [getBreed.rejected]: (state) => {state.breedLoadingStatue = 'error'},
-        [searchByBreedName.pending]: (state) => {state.status = 'loading'},
+        [searchByBreedName.pending]: (state) => {
+            state.searchResults = [];
+            state.status = 'loading'
+        },
         [searchByBreedName.fulfilled]: (state, action) => {
             state.status = 'success';
-            console.log(action.payload);
             if (action.payload.isFound) {
                 state.searchResults = action.payload.cats.map((cat)=>{
                     return {

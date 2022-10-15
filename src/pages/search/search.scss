@@ -11,4 +11,53 @@
     .black {
         color: #1D1D1D;
     }
+    .cat-list__item  {
+        position: relative;
+        padding: 0 0 70% 0;
+        cursor: pointer;
+    }
+    .cat-list__item:hover::before {
+        display: block;
+    }
+    .cat-list__item::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background-color: #FF868E;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: none;
+    }
+    .cat-list__item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 20px;
+    }
+    .cat-list__item:hover .cat-list__name {
+        display: block;
+    }
+    .cat-list__name {
+        display: none;
+        position: absolute;
+        width: 90%;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        padding: 10px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #FF868E;
+        background-color: #fff;
+        border-radius: 10px;
+    }
 }

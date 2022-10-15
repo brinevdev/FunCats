@@ -21,7 +21,7 @@
  }
  $i:0;
 @for $i from 1 through 20{
-    .cat-list_#{$i}{
+    .cat-list__item:nth-child(#{$i}){
         grid-area: item_#{$i};
     }
     $i:$i + 1;
