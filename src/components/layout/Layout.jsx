@@ -25,7 +25,7 @@ const Layout = () => {
                                    <NavLink to="likes"><Like fill="#FF868E"/></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
-                                   <NavLink to="#"><Favorite fill='#FF868E'/></NavLink> 
+                                   <NavLink to="favorites"><Favorite fill='#FF868E'/></NavLink> 
                                 </li>
                                 <li className="top-menu__item">
                                    <NavLink to="dislikes"><Dislike fill="#FF868E"/></NavLink> 

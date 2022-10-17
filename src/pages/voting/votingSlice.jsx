@@ -26,7 +26,35 @@ export const getVotes = createAsyncThunk('voting/getVotes', async () => {
     let likes = res.filter((vote) => vote.value > 0).map(like => like.image);
     let dislikes = res.filter((vote) => vote.value <0).map(like => like.image);
 
-    return {likes,dislikes}
+    res = await fetch(`https://api.thecatapi.com/v1/favourites?sub_id=${userId}`,{
+        method:"GET",
+        headers: {
+            "Content-Type": 'application/json',
+            "x-api-key": APIKEY
+        },
+    })
+    res = await res.json()
+    const favorites =  res.map((favorite) => ({
+        id: favorite.image.id,
+        url:favorite.image.url
+    }));
+   
+   
+    return {likes, dislikes, favorites}
+})
+
+
+
+export const removeFromFavorites = createAsyncThunk('voting/removeFromFavorites', async (id) => {
+    let res = await fetch(`https://api.thecatapi.com/v1/votes/?${id}`,{
+        method:"DELETE",
+        headers: {
+            "Content-Type": 'application/json',
+            "x-api-key": APIKEY
+        },
+    })
+    res = await res.json()
+    console.log(res);
 })
 
 
@@ -107,8 +135,8 @@ const votingSlice = createSlice({
             state.getVoteStatus = 'success';
             state.likes = action.payload.likes;
             state.dislikes = action.payload.dislikes;
+            state.favorites = action.payload.favorites;
         },
-        
     }
 })
 

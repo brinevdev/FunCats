@@ -11,14 +11,15 @@ import Spinner from "../../components/spinner/Spinner";
 const Votes = ({type}) => {
 
     const dispatch = useDispatch();
-    const {likes = [], dislikes = [], getVoteStatus} = useSelector(state => state.vote);
+    const {likes = [], dislikes = [], favorites = [], getVoteStatus} = useSelector(state => state.vote);
    
 
     useEffect(() => {
         dispatch(getVotes())
     },[])
 
-    let images = type =='likes' ? likes : dislikes;
+    let images = type =='likes' ? likes : type == 'favorites' ? favorites : dislikes;
+    
     if (images.length == 0) return (
         <div className="votes">
           <PageNav title = {type}/>

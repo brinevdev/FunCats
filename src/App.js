@@ -10,6 +10,7 @@ import SearchPage from './pages/search/SearchPage';
 import Votes from './pages/votes/Votes';
 
 
+
 function App() {
 
   const dispatch = useDispatch()
@@ -38,6 +39,7 @@ function App() {
         <Route path = 'search/:breed'  element = { <SearchPage/>}/>
         <Route path = 'likes'  element = { <Votes type = {'likes'}/>}/>
         <Route path = 'dislikes'  element = { <Votes type = 'dislikes'/>}/>
+        <Route path = 'favorites' element = {<Votes type = 'favorites'/>}/>
       </Route>
     </Routes>
   );
