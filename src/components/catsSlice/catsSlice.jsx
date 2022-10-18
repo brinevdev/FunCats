@@ -3,19 +3,17 @@ import { APIKEY } from "../../variables";
 
 
 const initialState = {
-    cats:[],
+    cats: [],
     cat: {},
-    filters:{
-        limit:5
-    },
-    breeds:[],
-    breed:{},
+    catsFilters:{ limit:5 },
+    breeds: [],
+    breed: {},
 }
 
-export const getAllCats = createAsyncThunk('cats/getAllCats', async (filters = {}) => {
+export const getAllCats = createAsyncThunk('cats/getAllCats', async (catsFilters = {}) => {
     let filterParams = '';
-    for (let key in filters) {
-        if (filters[key])  filterParams += `&${key}=${filters[key]}`
+    for (let key in catsFilters) {
+        if (catsFilters[key])  filterParams += `&${key}=${catsFilters[key]}`
     }
     const res = await fetch(`https://api.thecatapi.com/v1/images/search?api_key=${APIKEY}&has_breeds=1&size=full${filterParams}`);
     return await res.json();
@@ -51,12 +49,14 @@ export const searchByBreedName = createAsyncThunk('/cats/searchByBreadName', asy
 })
 
 
+
+
 const catsSlice = createSlice({
     name: 'cats',
     initialState,
     reducers: {
-        changeLimit: (state, action) => {state.filters.limit = action.payload},
-        changeBreed: (state, action) => {state.filters['breed_ids'] = action.payload},
+        changeLimit: (state, action) => {state.catsFilters.limit = action.payload},
+        changeBreed: (state, action) => {state.catsFilters['breed_ids'] = action.payload},
     },
     extraReducers: {
         [getAllCats.pending]: (state) => {state.status = 'loading'},
@@ -123,12 +123,13 @@ const catsSlice = createSlice({
             state.status = null;
             state.searchResults = [];
         },
+       
     }
 
 })
 
 const {reducer,actions} = catsSlice;
 
-export const {changeLimit, changeBreed} = actions
+export const {changeLimit, changeBreed,} = actions
 
 export default reducer;

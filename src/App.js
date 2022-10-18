@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router';
 import { useDispatch, useSelector, } from 'react-redux'; 
-import { getAllCats, getAllBreeds, getCat } from './components/catsSlice/catsSlice';
+import { getAllCats, getAllBreeds, getCat} from './components/catsSlice/catsSlice';
+import { getGallery } from './pages/gallery/gallerySlice';
 import Layout from './components/layout/Layout';
 import Breeds from './pages/breeds/Breeds';
 import SingleBreed from './pages/singleBreed/singleBreed';
 import Voting from './pages/voting/voting';
 import SearchPage from './pages/search/SearchPage';
 import Votes from './pages/votes/Votes';
+import Gallery from './pages/gallery/Gallery';
 
 
 
 function App() {
 
   const dispatch = useDispatch()
-  const filters = useSelector(state => state.cats.filters);
+  const {catsFilters} = useSelector(state => state.cats);
+  const {galleryFilters} = useSelector(state => state.gallery);
 
 
   useEffect(() => {
@@ -22,8 +25,12 @@ function App() {
   },[])
 
   useEffect(() => {
-    dispatch(getAllCats(filters))
-  },[filters.limit, filters.breed_ids])
+    dispatch(getAllCats(catsFilters))
+  },[catsFilters.limit, catsFilters.breed_ids])
+
+  useEffect(() => {
+    dispatch(getGallery(galleryFilters))
+  },[galleryFilters.limit, galleryFilters.breed_ids, galleryFilters.mime_types])
 
     useEffect(() => {
       dispatch(getCat());
@@ -40,6 +47,7 @@ function App() {
         <Route path = 'likes'  element = { <Votes type = {'likes'}/>}/>
         <Route path = 'dislikes'  element = { <Votes type = 'dislikes'/>}/>
         <Route path = 'favorites' element = {<Votes type = 'favorites'/>}/>
+        <Route path = 'gallery' element = {<Gallery/>}/>
       </Route>
     </Routes>
   );

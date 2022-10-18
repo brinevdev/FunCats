@@ -48,8 +48,8 @@ const Layout = () => {
                                     <NavLink to='breeds' className="item-menu__button ">BREEDS</NavLink>
                                 </div>
                                 <div className="side-menu__item item-menu">
-                                <NavLink to="#"><img src={galery} alt="" /></NavLink>
-                                    <NavLink to='#' className="item-menu__button ">GALLERY</NavLink>
+                                <NavLink to="gallery"><img src={galery} alt="" /></NavLink>
+                                    <NavLink to='gallery' className="item-menu__button ">GALLERY</NavLink>
                                 </div>
                             </nav>
                         </div>

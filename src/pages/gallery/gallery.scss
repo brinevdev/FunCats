@@ -1,0 +1,104 @@
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    &__top-menu{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__buttons {
+        display: flex;
+        gap: 20px;
+    }
+    &__update {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #F8F8F7;
+        border-radius: 10px;
+    }
+    &__upload {
+        min-width: 143px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #FF868E;
+        padding: 12px 30px 12px 56px;
+        text-transform: uppercase;
+        background: #FBE0DC url('./../../resourses/img/upload__icon.svg') no-repeat center left 30px;
+    }
+    .menu-gallery {
+        padding: 10px 20px;
+        background: #F8F8F7;
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 20px;
+        &__item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        &__title {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #8C8C8C;
+            padding-left: 10px;
+        }
+        &__select {
+            padding: 8px 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            min-width: 290px;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #1D1D1D;
+        }
+    }
+    .cat-list__item:hover::before {
+        display: block;
+    }
+    .cat-list__item:hover .heart-icon {
+        display: flex
+    }
+    .cat-list__item::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background-color: #FF868E;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: none;
+    }
+}
+.heart-icon {
+    display: none;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.heart-icon .heart-icon__image {
+    position: static;
+    width: 20px;
+    height: 18px;
+}
