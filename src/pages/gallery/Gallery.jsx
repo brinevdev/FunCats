@@ -8,13 +8,14 @@ import updateIcon from './../../resourses/img/update_icon.svg';
 import heartIcon from './../../resourses/img/heart-icon.svg';
 import { addToFavorite } from '../voting/votingSlice';
 import Modal from '../../components/Modal/Modal';
+import Spinner from '../../components/spinner/Spinner';
 
 
 
 const Gallery = () => {
 
     const { breeds } = useSelector(state => state.cats);
-    const {gallery = [], galleryFilters = []} = useSelector(state => state.gallery);
+    const {gallery = [], galleryFilters = [], galleryLoadingStatus} = useSelector(state => state.gallery);
     const [modalActive,setModalActive] = useState(false)
     const dispatch = useDispatch()
 
@@ -22,7 +23,8 @@ const Gallery = () => {
         return <option key = {breed.id} value = {breed.id}>{breed.name}</option>
     })
 
-    
+    if (galleryLoadingStatus == 'loading') return <Spinner/>
+
 
     return (
         <div className="gallery">
@@ -65,9 +67,13 @@ const Gallery = () => {
                     </select>
                 </div>
             </div>
+            { gallery.length == 0 ? 
+            <div className='not-found'>No items found</div>
+            :
             <CatList>
                 {gallery.map((cat) => <Cat {...cat} key = {cat.id} />)}
             </CatList>
+            }
             <Modal active = {modalActive} setActive = {setModalActive}/>
         </div>
     )

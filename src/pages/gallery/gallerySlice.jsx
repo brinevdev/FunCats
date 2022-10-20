@@ -26,9 +26,12 @@ const gallerySlice = createSlice({
         changeGalleryImageType:(state, action) => {state.galleryFilters.mime_types = action.payload}
     },
     extraReducers: {
+        [getGallery.pending]: (state) => {state.galleryLoadingStatus = 'loading'},
         [getGallery.fulfilled]: (state, action) => {
-            state.gallery = action.payload
-        }
+            state.galleryLoadingStatus = 'success';
+            state.gallery = action.payload;
+        },
+        [getGallery.rejected]: (state) => {state.galleryLoadingStatus = 'error'}
     }
 }) 
 
