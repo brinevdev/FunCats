@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeGalleryBreed, changeGalleryImageType, changeGalleryLimit, getGallery } from './gallerySlice';
 import CatList from '../../components/catList/CatList';
@@ -6,12 +7,15 @@ import './gallery.scss';
 import updateIcon from './../../resourses/img/update_icon.svg';
 import heartIcon from './../../resourses/img/heart-icon.svg';
 import { addToFavorite } from '../voting/votingSlice';
+import Modal from '../../components/Modal/Modal';
+
 
 
 const Gallery = () => {
 
     const { breeds } = useSelector(state => state.cats);
     const {gallery = [], galleryFilters = []} = useSelector(state => state.gallery);
+    const [modalActive,setModalActive] = useState(false)
     const dispatch = useDispatch()
 
     let breedsOptions = breeds.map((breed) => {
@@ -25,7 +29,7 @@ const Gallery = () => {
             <div className="gallery__top-menu">
                 <PageNav title = 'gallery'/>
                 <div className="gallery__buttons">
-                    <button className="gallery__upload">
+                    <button className="gallery__upload" onClick = {() => setModalActive(true)}>
                         Upload
                     </button>
                     <button className="gallery__update" onClick = {() => dispatch(getGallery(galleryFilters))}>
@@ -64,6 +68,7 @@ const Gallery = () => {
             <CatList>
                 {gallery.map((cat) => <Cat {...cat} key = {cat.id} />)}
             </CatList>
+            <Modal active = {modalActive} setActive = {setModalActive}/>
         </div>
     )
 }

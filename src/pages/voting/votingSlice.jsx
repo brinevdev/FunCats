@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { APIKEY } from "../../variables";
+import { userId } from "../../variables";
 
 
 
-const userId = 'testUser530';
 
 const initialState = {
     voteResponse:{},
