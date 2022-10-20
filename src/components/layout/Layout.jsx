@@ -6,8 +6,9 @@ import breeds from './../../resourses/img/breeds_image.png';
 import {ReactComponent as Like} from './../../resourses/img/like_smile.svg';
 import {ReactComponent as Favorite} from './../../resourses/img/heart_smile.svg';
 import {ReactComponent as Dislike} from './../../resourses/img/dislike_smile.svg';
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet, Link, NavLink } from 'react-router-dom';
 import Search from '../search/Search';
+
 
 
 const Layout = () => {
@@ -16,7 +17,7 @@ const Layout = () => {
         <div className="wrapper">
             <div className="container">
                 <header className="header">
-                    <a href="/" className="header__logo"><img src={logo} alt="logo" /></a>
+                    <Link to="/" className="header__logo"><img src={logo} alt="logo" /></Link>
                     <div className="navigation">
                         <Search/>
                         <nav className="top-menu">
@@ -40,8 +41,8 @@ const Layout = () => {
                             <div className="side-menu__title">Lets start using The Cat API</div>
                             <nav className="side-menu__items">
                                 <div className="side-menu__item item-menu">
-                                <NavLink to='/' className="item-menu__image"><img src={voting} alt="" /></NavLink>
-                                    <NavLink to='/' className="item-menu__button">VOTING</NavLink>
+                                <NavLink to='voting' className="item-menu__image"><img src={voting} alt="" /></NavLink>
+                                    <NavLink to='voting' className="item-menu__button">VOTING</NavLink>
                                 </div>
                                 <div className="side-menu__item item-menu">
                                     <NavLink to="breeds"  className="item-menu__image"><img src={breeds} alt="" /></NavLink>
@@ -55,7 +56,7 @@ const Layout = () => {
                         </div>
                     </div>
                     <div className="page">
-                        <Outlet/>
+                       <Outlet/>
                     </div>
                 </main>
             </div>

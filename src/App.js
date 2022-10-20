@@ -10,6 +10,7 @@ import Voting from './pages/voting/voting';
 import SearchPage from './pages/search/SearchPage';
 import Votes from './pages/votes/Votes';
 import Gallery from './pages/gallery/Gallery';
+import MainPage from './components/mainPage/MainPage';
 
 
 
@@ -40,7 +41,8 @@ function App() {
   return (
     <Routes>
       <Route path='/' element = {<Layout/>}>
-        <Route index  element = { <Voting/>}/>
+        <Route index element = {<MainPage/>}/>
+        <Route path = 'voting'  element = { <Voting/>}/>
         <Route path = 'breeds'  element = { <Breeds/> }/>
         <Route path = 'breeds/:id'  element = { <SingleBreed/>}/>
         <Route path = 'search/:breed'  element = { <SearchPage/>}/>
