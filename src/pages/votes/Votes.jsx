@@ -20,6 +20,13 @@ const Votes = ({type}) => {
 
     let images = type =='likes' ? likes : type == 'favorites' ? favorites : dislikes;
     
+    if (getVoteStatus == 'loading') return  (
+        <div className="votes">
+           <PageNav title = {type}/>
+            <Spinner/>
+         </div>
+         )
+
     if (images.length == 0) return (
         <div className="votes">
           <PageNav title = {type}/>
@@ -27,14 +34,7 @@ const Votes = ({type}) => {
         </div>
     )
 
-    if (getVoteStatus == 'loading') return  (
-    <div className="votes">
-       <PageNav title = {type}/>
-        <Spinner/>
-     </div>
-     )
-
-
+  
     images = images.map((like,index)=><Cat {...like} key = {index}/>)
     
     return (
