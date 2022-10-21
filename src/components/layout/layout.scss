@@ -57,8 +57,11 @@
         &:hover{
             background-color: #FBE0DC;
         }
-        &_acitve{
-            background-color: #FBE0DC;
+        &.active{
+            background-color: #FF868E;
+            svg {
+                fill: #fff
+            };
         }
     }
     
