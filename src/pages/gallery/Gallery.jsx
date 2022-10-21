@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeGalleryBreed, changeGalleryImageType, changeGalleryLimit, getGallery } from './gallerySlice';
 import CatList from '../../components/catList/CatList';
@@ -16,6 +16,10 @@ const Gallery = () => {
 
     const { breeds } = useSelector(state => state.cats);
     const {gallery = [], galleryFilters = [], galleryLoadingStatus} = useSelector(state => state.gallery);
+    const selectLimit = useRef(null);
+    const selectBreed = useRef(null);
+    const selectImageType = useRef(null);
+
     const [modalActive,setModalActive] = useState(false)
     const dispatch = useDispatch()
 
@@ -23,8 +27,26 @@ const Gallery = () => {
         return <option key = {breed.id} value = {breed.id}>{breed.name}</option>
     })
 
-    if (galleryLoadingStatus == 'loading') return <Spinner/>
 
+    useEffect(() => {
+        if (galleryFilters.limit  && selectLimit.current) {
+            const selectedItemIndex = Array.from(selectLimit.current.options).findIndex((option) => option.value == galleryFilters.limit);
+            selectLimit.current.selectedIndex = selectedItemIndex;
+        }
+        if (galleryFilters.breed_ids && selectBreed.current) {
+            const selectedItemIndex = Array.from(selectBreed.current.options).findIndex((option) => option.value == galleryFilters.breed_ids);
+            selectBreed.current.selectedIndex = selectedItemIndex;
+        }
+        if (galleryFilters.mime_types && selectImageType.current) {
+            const selectedItemIndex = Array.from(selectImageType.current.options).findIndex((option) => option.value == galleryFilters.mime_types);
+            selectImageType.current.selectedIndex = selectedItemIndex;
+        }
+    })
+
+
+
+
+    if (galleryLoadingStatus == 'loading') return <Spinner/>
 
     return (
         <div className="gallery">
@@ -42,7 +64,7 @@ const Gallery = () => {
             <div className="gallery__menu menu-gallery">
                 <div className="menu-gallery__item">
                     <div className="menu-gallery__title">Breed</div>
-                    <select className="menu-gallery__select" onChange = {(e) => {
+                    <select ref = {selectBreed} className="menu-gallery__select" onChange = {(e) => {
                         dispatch(changeGalleryBreed(e.target.value))
                         }}>
                         <option value = {''}>All breeds</option>
@@ -51,7 +73,7 @@ const Gallery = () => {
                 </div>
                 <div className="menu-gallery__item">
                 <div className="menu-gallery__title">Limit</div>
-                    <select className="menu-gallery__select" onChange={(e) => dispatch(changeGalleryLimit(e.target.value))}>
+                    <select ref = {selectLimit} className="menu-gallery__select" onChange={(e) => dispatch(changeGalleryLimit(e.target.value))}>
                         <option value='5'>Limit: 5</option>
                         <option value='10'>Limit: 10</option>
                         <option value='15'>Limit: 15</option>
@@ -60,7 +82,7 @@ const Gallery = () => {
                 </div>
                 <div className="menu-gallery__item">
                     <div className="menu-gallery__title">Type</div>
-                    <select className="menu-gallery__select" onChange={(e) => dispatch(changeGalleryImageType(e.target.value))}>
+                    <select ref = {selectImageType} className="menu-gallery__select" onChange={(e) => dispatch(changeGalleryImageType(e.target.value))}>
                         <option value="">All</option>
                         <option value="gif">Animated</option>
                         <option value="jpg,png">Static</option>
