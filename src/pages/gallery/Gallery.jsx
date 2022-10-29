@@ -8,7 +8,7 @@ import updateIcon from './../../resourses/img/update_icon.svg';
 import heartIcon from './../../resourses/img/heart-icon.svg';
 import { addToFavorite } from '../voting/votingSlice';
 import Modal from '../../components/Modal/Modal';
-import Spinner from '../../components/spinner/Spinner';
+
 
 
 
@@ -44,17 +44,13 @@ const Gallery = () => {
     })
 
 
-
-
-    if (galleryLoadingStatus == 'loading') return <Spinner/>
-
     return (
         <div className="gallery">
             <div className="gallery__top-menu">
                 <PageNav title = 'gallery'/>
                 <div className="gallery__buttons">
-                    <button className="gallery__upload" onClick = {() => setModalActive(true)}>
-                        Upload
+                    <button className="gallery__upload upload-gallery" onClick = {() => setModalActive(true)}>
+                        <div className="upload-gallery__image">Upload</div>
                     </button>
                     <button className="gallery__update" onClick = {() => dispatch(getGallery(galleryFilters))}>
                         <img src={updateIcon} alt="" />
@@ -88,11 +84,16 @@ const Gallery = () => {
                         <option value="jpg,png">Static</option>
                     </select>
                 </div>
+                <div className="menu_gallery__item">
+                    <button className="gallery__update gallery__update_mobile" onClick = {() => dispatch(getGallery(galleryFilters))}>
+                        <img src={updateIcon} alt="" />
+                    </button>
+                </div>
             </div>
             { gallery.length == 0 ? 
             <div className='not-found'>No items found</div>
             :
-            <CatList>
+            <CatList status={ galleryLoadingStatus }>
                 {gallery.map((cat) => <Cat {...cat} key = {cat.id} />)}
             </CatList>
             }

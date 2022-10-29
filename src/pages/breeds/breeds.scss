@@ -1,7 +1,7 @@
 .breeds-nav {
     display: flex;
-    gap: 10px;
     align-items: center;
+    justify-content: space-between;
     &__select {
         font-weight: 400;
         font-size: 16px;
@@ -25,6 +25,10 @@
     }
     select {
         cursor: pointer;
+    }
+    &__menu {
+        display: flex;
+        gap: 10px;
     }
     
     margin-bottom: 20px;
@@ -64,3 +68,32 @@
         border-radius: 10px;
     }
 }
+
+@media(max-width:1200px) {
+    .breeds-nav {
+        align-items: start;
+        gap: 20px;
+        flex-direction: column;
+    }
+}
+   
+@media(max-width:576px) {
+    .breeds-nav {
+        &__menu {
+            width: 100%;
+            flex-direction: column;
+        }
+    }
+    .breeds {
+        .cat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 15px 0px;
+            &__item .cat-list__name {
+                display: block;
+            }
+        }
+    }
+}
+

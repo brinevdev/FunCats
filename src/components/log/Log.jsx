@@ -19,7 +19,7 @@ const Log = ({id,time,type,status,message}) => {
         <div className="log">
             <div className="log__message message">
                 <div className="message__time">{time}</div>
-                <div className="message text">Image ID:<span>{id}</span> was added to {type}</div>
+                <div className="message__text"> Image ID: <span>{id}</span> was added to {type}</div>
             </div>
             <div className="log__smile">
                 {type == 'Dislikes' ?  <Dislike fill='#FF868E'/> : type == 'Favorites' ? <Favorite fill = '#FF868E'/> : <Like fill = "#97EAB9"/>}

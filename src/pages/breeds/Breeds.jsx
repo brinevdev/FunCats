@@ -35,18 +35,20 @@ const Breeds = () => {
      <div className='breeds'>
         <div className="breeds-nav">
             <PageNav title = 'breeds'/> 
-            <select  ref = {selectBreed} className="breeds-nav__select" onChange = {(e) => {
-                dispatch(changeBreed(e.target.value))
-                }}>
-                <option value = {''}>All breeds</option>
-                {breedsOptions}
-            </select>
-            <select ref = {selectLimit} className="breeds-nav__select breeds-nav__select_limit" onChange={(e) => dispatch(changeLimit(e.target.value))}>
-                <option value='5'>Limit: 5</option>
-                <option value='10'>Limit: 10</option>
-                <option value='15'>Limit: 15</option>
-                <option value='20'>Limit: 20</option>
-            </select>
+            <div className="breeds-nav__menu">
+                <select  ref = {selectBreed} className="breeds-nav__select" onChange = {(e) => {
+                    dispatch(changeBreed(e.target.value))
+                    }}>
+                    <option value = {''}>All breeds</option>
+                    {breedsOptions}
+                </select>
+                <select ref = {selectLimit} className="breeds-nav__select breeds-nav__select_limit" onChange={(e) => dispatch(changeLimit(e.target.value))}>
+                    <option value='5'>Limit: 5</option>
+                    <option value='10'>Limit: 10</option>
+                    <option value='15'>Limit: 15</option>
+                    <option value='20'>Limit: 20</option>
+                </select>
+            </div>
         </div>
         <CatList status = {status}>
                 {cats.map((cat) => <Cat {...cat} key = {cat.id} />)}

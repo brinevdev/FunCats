@@ -22,7 +22,8 @@ function App() {
 
 
   useEffect(() => {
-    dispatch(getAllBreeds())
+    dispatch(getAllBreeds());
+    dispatch(getCat());
   },[])
 
   useEffect(() => {
@@ -33,9 +34,7 @@ function App() {
     dispatch(getGallery(galleryFilters))
   },[galleryFilters.limit, galleryFilters.breed_ids, galleryFilters.mime_types])
 
-    useEffect(() => {
-      dispatch(getCat());
-  },[])
+ 
 
 
   return (
@@ -46,8 +45,8 @@ function App() {
         <Route path = 'breeds'  element = { <Breeds/> }/>
         <Route path = 'breeds/:id'  element = { <SingleBreed/>}/>
         <Route path = 'search/:breed'  element = { <SearchPage/>}/>
-        <Route path = 'likes'  element = { <Votes type = {'likes'}/>}/>
-        <Route path = 'dislikes'  element = { <Votes type = 'dislikes'/>}/>
+        <Route path = 'likes'  element = {<Votes type = 'likes'/>}/>
+        <Route path = 'dislikes'  element = {<Votes type = 'dislikes'/>}/>
         <Route path = 'favorites' element = {<Votes type = 'favorites'/>}/>
         <Route path = 'gallery' element = {<Gallery/>}/>
       </Route>

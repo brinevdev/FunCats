@@ -11,11 +11,12 @@
     transition: 400ms;
     pointer-events: none;
     opacity: 0;
+    z-index: 20;
 }
 .modal.active {
-   
     opacity: 1;
     pointer-events:all;
+    padding: 0 15px;
 }
 .modal {
     &__body {
@@ -24,9 +25,10 @@
         align-items: center;
         position: relative;
         max-width: 680px;
-        padding: 100px 20px;
+        padding: 60px 20px 20px;
         background: #F8F8F7;
         border-radius: 20px;
+        z-index: 25;
     }
     &__header {
         margin-bottom: 40px;
@@ -102,6 +104,7 @@
             line-height: 30px;
             margin-bottom: 20px;
             background: #fff url(./../../resourses/img/save__icon.png) no-repeat center center;
+            background-size: 35%;
         }
         &__area.error {
             background-color: #FF868E;
@@ -137,5 +140,43 @@
         background: #FF868E;
         border-radius: 10px;
        }
+    }
+}
+
+
+@media(max-width:992px) {
+    .modal .drop__area {
+        width: 480px;
+        height: 240px;
+    }
+    .modal__title {
+        font-size: 28px;
+    }
+}
+@media(max-width:768px) {
+    .modal__title {
+        font-size: 24px;
+    }
+    
+}
+@media(max-width:576px) {
+    .modal__body {
+        padding: 60px 10px 10px;
+    }
+    .modal__message {
+        font-size: 20px;
+    }
+    .modal .drop__area {
+        width: auto;
+        padding: 30px;
+    }
+    .modal__title {
+        font-size: 20px;
+    }
+    .modal__subtitle {
+        font-size: 18px;
+    }
+    .drop__text {
+        max-width: 200px;
     }
 }

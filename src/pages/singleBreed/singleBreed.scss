@@ -2,10 +2,9 @@
     display: flex;
     flex-direction: column;
      &__image {
-        margin: 20px auto 50px;
+        margin: 20px 0 50px;
         position: relative;
-        width: 640px;
-        height: 360px;
+        padding: 0 0 55% 0;
         img{
         position: absolute;
         width: 100%;
@@ -58,5 +57,26 @@
    .bold {
         font-weight: 700;
         color: #1D1D1D;
+    }
+}
+
+
+@media(max-width:576px) {
+    .breed__description {
+        flex-direction: column;
+        gap: 10px;
+        padding: 45px 20px 20px;
+    }
+    .breed__temperament {
+        flex: 1 1 100%;
+        max-width: none;
+    }
+    .breed__info {
+        flex: 1 1 100%;
+        margin-left: 0;
+    }
+    .breed__name {
+        font-size: 22px;
+        padding: 5px 20px;
     }
 }

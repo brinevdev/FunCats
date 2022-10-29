@@ -44,15 +44,17 @@ const Modal = ({active, setActive}) => {
     }
 
 
-
-
     const onClickHandler = () => {
         myRef.current.click();
     }
-
     const onInputChange = (e) => {
         const file = e.target.files[0]
         showPreview(file);
+    }
+    const onModalClose = () => {
+        setActive((active) => setActive(!active));
+        setImgPreview(null);
+        setExtensionError(false);
     }
 
 
@@ -112,7 +114,7 @@ const Modal = ({active, setActive}) => {
                     {extensionError || <div className="drop__file-name">{img ? img.name : 'no file selected'}</div>}
                     {img ?  <div className="upload" onClick = {onUploadHandler}> <button>UPLOAD PHOTO</button></div>  : null}
                 </div>
-                <button onClick = {() => setActive(false)} className="modal__close">
+                <button onClick = {onModalClose} className="modal__close">
                     <img src = {closeIcon} alt="" />
                 </button>
                 {extensionError && <div className='error'>Only jpg or png extensions are possible</div>}
